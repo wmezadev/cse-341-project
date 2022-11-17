@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { MONGODB_URI } from './config';
+import { routes } from './routes';
 
 dotenv.config();
 
@@ -12,11 +13,13 @@ const port = process.env.PORT;
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World with TypeScript!');
 });
-
-app.use(bodyParser.json()).use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  next();
-});
+app
+  .use(bodyParser.json())
+  .use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  })
+  .use('/', routes);
 
 mongoose.connect(MONGODB_URI, {}, () => {
   app.listen(port, () => {
