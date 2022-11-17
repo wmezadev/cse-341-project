@@ -1,6 +1,8 @@
 import express, { Express, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import { MONGODB_URI } from './config';
 
 dotenv.config();
 
@@ -16,6 +18,9 @@ app.use(bodyParser.json()).use((req, res, next) => {
   next();
 });
 
-app.listen(port, () => {
-  console.log(`[server]: Server is running at http://localhost:${port}`);
+mongoose.connect(MONGODB_URI, {}, () => {
+  app.listen(port, () => {
+    console.log(`[server]: Server is running at http://localhost:${port}`);
+    console.log('Connected to mongodb');
+  });
 });
