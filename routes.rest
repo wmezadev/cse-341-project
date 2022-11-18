@@ -1,0 +1,36 @@
+### Get all posts
+GET http://localhost:8080/post
+
+### Create post
+POST http://localhost:8080/post HTTP/1.1
+content-type: application/json
+
+{
+    "title": "First Post",
+    "slug": "first-post",
+    "published": true,
+    "tags": ["a", "b"],
+    "author": "wmezadev",
+    "excerpt": "this is my first post",
+    "content": "Hello World this could be rich text"
+}
+
+### Get post by id
+GET http://localhost:8080/post/637667d7a2d0e66230c09e09
+
+### Update post by id
+PUT http://localhost:8080/post/637667d7a2d0e66230c09e09 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "First Post updated 2",
+    "slug": "first-post",
+    "published": true,
+    "tags": ["d"],
+    "author": "wmezadev",
+    "excerpt": "this is my first post",
+    "content": "Hello World this could be rich text"
+}
+
+### Destroy post by id
+DELETE http://localhost:8080/post/63770f6c123a1e970a8175bb
