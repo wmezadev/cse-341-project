@@ -7,9 +7,7 @@
   },
   "host": "wmezadev-cs341-blog.onrender.com",
   "basePath": "/",
-  "schemes": [
-    "https"
-  ],
+  "schemes": ["https"],
   "paths": {
     "/post": {
       "get": {
@@ -19,7 +17,38 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Post Title"
+                },
+                "slug": {
+                  "example": "this-is-a-post-slug"
+                },
+                "published": {
+                  "example": true
+                },
+                "tags": {
+                  "example": ["a", "b"]
+                },
+                "author": {
+                  "example": "wmezadev"
+                },
+                "excerpt": {
+                  "example": "this is my second post"
+                },
+                "content": {
+                  "example": "Hello World this could be rich text"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -44,6 +73,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "example": "Post Title"
+                },
+                "slug": {
+                  "example": "this-is-a-post-slug"
+                },
+                "published": {
+                  "example": true
+                },
+                "tags": {
+                  "example": ["a", "b"]
+                },
+                "author": {
+                  "example": "wmezadev"
+                },
+                "excerpt": {
+                  "example": "this is my second post"
+                },
+                "content": {
+                  "example": "Hello World this could be rich text"
+                }
+              }
+            }
           }
         ],
         "responses": {}
@@ -69,7 +128,29 @@
       },
       "post": {
         "description": "",
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "post_id": {
+                  "example": "637716e6cf96a253b8e1b77f"
+                },
+                "published": {
+                  "example": true
+                },
+                "author": {
+                  "example": "wmezadev"
+                },
+                "content": {
+                  "example": "This is the content of a second Post comment"
+                }
+              }
+            }
+          }
+        ],
         "responses": {}
       }
     },
@@ -108,6 +189,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "published": {
+                  "example": true
+                },
+                "author": {
+                  "example": "wmezadev"
+                },
+                "content": {
+                  "example": "This is the content of a second Post comment"
+                }
+              }
+            }
           }
         ],
         "responses": {}
