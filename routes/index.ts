@@ -1,7 +1,9 @@
 import express, { Router } from 'express';
 import { postRoutes } from './post';
 import { commentRoutes } from './comment';
+import { swaggerRoutes } from './swagger';
 
-export const routes: Router = express.Router();
-routes.use(postRoutes);
-routes.use(commentRoutes);
+export const router: Router = express.Router();
+router.use(postRoutes);
+router.use(commentRoutes);
+router.use(swaggerRoutes);
