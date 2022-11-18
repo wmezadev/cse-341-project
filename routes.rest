@@ -6,12 +6,12 @@ POST http://localhost:8080/post HTTP/1.1
 content-type: application/json
 
 {
-    "title": "First Post",
-    "slug": "first-post",
+    "title": "Second Post",
+    "slug": "second-post",
     "published": true,
     "tags": ["a", "b"],
     "author": "wmezadev",
-    "excerpt": "this is my first post",
+    "excerpt": "this is my second post",
     "content": "Hello World this could be rich text"
 }
 
@@ -34,3 +34,32 @@ content-type: application/json
 
 ### Destroy post by id
 DELETE http://localhost:8080/post/63770f6c123a1e970a8175bb
+
+### Get all comments
+GET http://localhost:8080/comment
+
+### Create comment
+POST http://localhost:8080/comment HTTP/1.1
+content-type: application/json
+
+{
+    "post_id": "637716e6cf96a253b8e1b77f",
+    "published": true,
+    "author": "wmezadev",
+    "content": "This is the content of a second Post comment"
+}
+
+### Get comments by Post Id
+GET http://localhost:8080/comment/getByPost/637716e6cf96a253b8e1b77f
+
+### Update comment by id
+PUT http://localhost:8080/comment/637714b29c36b0275b63c75f HTTP/1.1
+content-type: application/json
+
+{
+    "published": false,
+    "content": "This is the content of a third Post comment"
+}
+
+### Destroy comment by id
+DELETE http://localhost:8080/comment/637714b29c36b0275b63c75f

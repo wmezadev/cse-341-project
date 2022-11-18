@@ -74,7 +74,7 @@ const destroy = async (req: Request, res: Response) => {
     if (!resp) {
       throw new Error('Post not found');
     }
-    return res.status(200).json(resp);
+    return res.status(200).send();
   } catch (err) {
     return res.status(500).json(err);
   }

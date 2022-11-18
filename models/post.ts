@@ -12,7 +12,7 @@ export interface IPost {
   content: string;
 }
 
-const postSchema = new Schema<IPost>({
+const schema = new Schema<IPost>({
   title: {
     type: String,
     required: true
@@ -42,4 +42,4 @@ const postSchema = new Schema<IPost>({
   }
 });
 
-export const Post = model<IPost>('Post', postSchema);
+export const Post = model<IPost>('Post', schema);
