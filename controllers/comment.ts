@@ -48,9 +48,9 @@ const destroy = async (req: Request, res: Response) => {
     if (!resp) {
       throw new Error('Comment not found');
     }
-    return res.status(200).send();
+    return res.status(204).send();
   } catch (err) {
-    return res.status(500).json(err);
+    return res.status(404).json(err);
   }
 };
 
@@ -85,9 +85,9 @@ const udpate = async (req: Request, res: Response) => {
     if (!resp) {
       throw new Error('Comment not found');
     }
-    return res.status(200).json(resp);
+    return res.status(201).json(resp);
   } catch (err) {
-    return res.status(500).json(err);
+    return res.status(400).json(err);
   }
 };
 

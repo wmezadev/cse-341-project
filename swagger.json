@@ -49,7 +49,14 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       }
     },
     "/post/{id}": {
@@ -63,7 +70,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
       },
       "put": {
         "description": "",
@@ -105,7 +119,17 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       },
       "delete": {
         "description": "",
@@ -117,14 +141,28 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
       }
     },
     "/comment": {
       "get": {
         "description": "",
         "parameters": [],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       },
       "post": {
         "description": "",
@@ -151,7 +189,17 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       }
     },
     "/comment/getByPost/{post_id}": {
@@ -165,7 +213,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
       }
     },
     "/comment/{id}": {
@@ -179,7 +234,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
       },
       "put": {
         "description": "",
@@ -209,7 +271,17 @@
             }
           }
         ],
-        "responses": {}
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Client Error (check request body)"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       },
       "delete": {
         "description": "",
@@ -221,7 +293,14 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Client Error (check request param)"
+          }
+        }
       }
     }
   }

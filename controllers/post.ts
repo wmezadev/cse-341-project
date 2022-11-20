@@ -25,7 +25,7 @@ const store = async (req: Request, res: Response) => {
       content: content
     });
     await post.save();
-    return res.status(200).json(post);
+    return res.status(201).json(post);
   } catch (err) {
     return res.status(500).json(err);
   }
@@ -39,8 +39,8 @@ const show = async (req: Request, res: Response) => {
       throw new Error('Post not found');
     }
     return res.status(200).json(post);
-  } catch (err) {
-    return res.status(500).json(err);
+  } catch (err: any) {
+    return res.status(404).json(err.Error);
   }
 };
 
@@ -48,22 +48,16 @@ const update = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { title, slug, published, tags, author, excerpt, content } = req.body;
-    const post = await Post.updateOne(
+    const resp = await Post.updateOne(
       { _id: id },
-      {
-        title,
-        slug,
-        published,
-        tags,
-        author,
-        excerpt,
-        content,
-        updated: new Date()
-      }
+      { title, slug, published, tags, author, excerpt, content }
     );
-    return res.status(200).json(post);
-  } catch (err) {
-    return res.status(500).json(err);
+    if (!resp.acknowledged) {
+      throw new Error(`There is no Post for ID: ${id}`);
+    }
+    return res.status(201).json(resp);
+  } catch (err: any) {
+    return res.status(500).json(err.Error);
   }
 };
 
@@ -74,9 +68,9 @@ const destroy = async (req: Request, res: Response) => {
     if (!resp) {
       throw new Error('Post not found');
     }
-    return res.status(200).send();
-  } catch (err) {
-    return res.status(500).json(err);
+    return res.status(204).send();
+  } catch (err: any) {
+    return res.status(404).json(err.Error);
   }
 };
 
