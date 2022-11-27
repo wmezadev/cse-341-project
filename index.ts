@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { router } from './routes';
-import { APP_PORT, MONGODB_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from './config';
+import { APP_PORT, MONGODB_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, HOST } from './config';
 import { User } from './models';
 import { VerifyCallback } from 'passport-google-oauth2';
 
@@ -42,7 +42,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:8080/auth/google/callback',
+      callbackURL: `${HOST}/auth/google/callback`,
       passReqToCallback: true
     },
     function (
