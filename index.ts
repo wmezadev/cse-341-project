@@ -4,15 +4,16 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import { router } from './routes';
-import { APP_PORT, MONGODB_URI } from './config';
+import { APP_PORT, MONGODB_URI, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from './config';
 import { User } from './models';
+import { VerifyCallback } from 'passport-google-oauth2';
 
 dotenv.config();
 
 const app: Express = express();
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Blog API Project @wmezadev');
+  res.send('Blog API Project @wmezadev <a href="/auth/google">Authenticate with Google</a>');
 });
 
 app
@@ -35,9 +36,34 @@ app
 // passport config
 const LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+const GoogleStrategy = require('passport-google-oauth2').Strategy;
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET,
+      callbackURL: 'http://localhost:8080/auth/google/callback',
+      passReqToCallback: true
+    },
+    function (
+      request: Request,
+      accessToken: string,
+      refreshToken: string,
+      profile: any,
+      done: VerifyCallback
+    ) {
+      return done(null, profile);
+    }
+  )
+);
 
+passport.serializeUser(function (user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function (user: Express.User, done) {
+  done(null, user);
+});
 mongoose.connect(MONGODB_URI, {}, () => {
   app.listen(APP_PORT, () => {
     console.log(`[server]: Server is running at http://localhost:${APP_PORT}`);

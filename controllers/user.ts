@@ -46,4 +46,26 @@ const logout = (req: Request, res: Response) => {
   res.redirect('/login');
 };
 
-export const UserController = { register, login, logout };
+const oauthGoogleLogin = () => {
+  return passport.authenticate('google', { scope: ['email', 'profile'] });
+};
+
+const oauthGoogleCallback = () => {
+  return passport.authenticate('google', {
+    successRedirect: '/post',
+    failureRedirect: '/auth/google/failure'
+  });
+};
+
+const oauthGoogleCallbackFailure = (req: Request, res: Response) => {
+  res.send('Failed to authenticate..');
+};
+
+export const UserController = {
+  register,
+  login,
+  logout,
+  oauthGoogleLogin,
+  oauthGoogleCallback,
+  oauthGoogleCallbackFailure
+};

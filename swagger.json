@@ -313,7 +313,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "email": {
                   "example": "wilmeza"
                 },
                 "password": {
@@ -328,7 +328,21 @@
             "description": "Success"
           },
           "401": {
-            "description": "Auth error, username or password not valid"
+            "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "description": "OAuth Login using google credentials",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, email or password not valid"
           }
         }
       }
