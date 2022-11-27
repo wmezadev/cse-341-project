@@ -5,9 +5,9 @@
     "description": "BYUI Course API",
     "version": "1.0.0"
   },
-  "host": "wmezadev-cs341-blog.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
-  "schemes": ["https"],
+  "schemes": ["http"],
   "paths": {
     "/post": {
       "get": {
@@ -299,6 +299,36 @@
           },
           "404": {
             "description": "Client Error (check request param)"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "wilmeza"
+                },
+                "password": {
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, username or password not valid"
           }
         }
       }

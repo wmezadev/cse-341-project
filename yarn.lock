@@ -795,6 +795,13 @@
     "@types/connect" "*"
     "@types/node" "*"
 
+"@types/connect-ensure-login@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@types/connect-ensure-login/-/connect-ensure-login-0.1.7.tgz#ceda1bc8e115082c816b4c9f1df1ab51c2bf2fcb"
+  integrity sha512-3sbxb57/Cqz/o/fLre0vqEOid52hebUUCWjE/yTOjJX0qdtbSKkGvgQ+nLikavxWi7S51irh9JRlKVUfLUbR9w==
+  dependencies:
+    "@types/express" "*"
+
 "@types/connect@*":
   version "3.4.35"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.35.tgz#5fcf6ae445e4021d1fc2219a4873cc73a3bb2ad1"
@@ -1113,6 +1120,11 @@ concurrently@^7.5.0:
     supports-color "^8.1.0"
     tree-kill "^1.2.2"
     yargs "^17.3.1"
+
+connect-ensure-login@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/connect-ensure-login/-/connect-ensure-login-0.1.1.tgz#174dcc51243b9eac23f8d98215aeb6694e2e8a12"
+  integrity sha512-u0LGY/YXgkqdD4uVz8Gkri0adby5SBPYIFQvIa4FjBIaZUN0yuZPVHsjAA2bUiprGyjh8NlqxPUcIzzfTiXhQQ==
 
 content-disposition@0.5.4:
   version "0.5.4"

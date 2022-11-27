@@ -23,4 +23,27 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export const UserController = { register };
+const login = (req: Request, res: Response, next: NextFunction) => {
+  passport.authenticate('local', function (err, user) {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      req.logout({ keepSessionInfo: false }, () => {});
+      return res.status(401).json({ success: false, message: 'authentication failed' });
+    }
+    req.login(user, function (err) {
+      if (err) {
+        return next(err);
+      }
+      return res.json({ success: true, message: 'authentication succeded' });
+    });
+  })(req, res, next);
+};
+
+const logout = (req: Request, res: Response) => {
+  req.logout({ keepSessionInfo: false }, () => {});
+  res.redirect('/login');
+};
+
+export const UserController = { register, login, logout };
