@@ -5,9 +5,9 @@
     "description": "BYUI Course API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "wmezadev-cs341-blog.onrender.com",
   "basePath": "/",
-  "schemes": ["http"],
+  "schemes": ["https"],
   "paths": {
     "/post": {
       "get": {
@@ -303,9 +303,9 @@
         }
       }
     },
-    "/login": {
+    "/register": {
       "post": {
-        "description": "",
+        "description": "Creates a new user",
         "parameters": [
           {
             "name": "body",
@@ -313,7 +313,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "email": {
+                "username": {
                   "example": "wilmeza"
                 },
                 "password": {
@@ -329,6 +329,47 @@
           },
           "401": {
             "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "example": "wilmeza"
+                },
+                "password": {
+                  "example": "password"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Auth error, email or password not valid"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "get": {
+        "description": "destroys user session",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
